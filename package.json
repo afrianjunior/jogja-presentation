@@ -1,0 +1,18 @@
+{
+  "name": "presentation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "mdx-deck deck.js -p 3001",
+    "build": "mdx-deck build deck.js",
+    "test": "echo \"there are no tests\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "code-surfer": "2.0.0-alpha.5",
+    "file-loader": "^4.0.0",
+    "mdx-deck": "^2.5.0"
+  }
+}

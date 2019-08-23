@@ -1,0 +1,206 @@
+import { CodeSurferLayout } from 'code-surfer'
+
+## Clean Code
+
+[ryanmcdermott/clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript#solid)
+
+---
+## Don't use flags as function parameters
+
+---
+
+<CodeSurferLayout>
+
+```js title="Bad"
+function createFile(name, dir) {
+  if (dir === 'temp') {
+    fs.create(`./temp/name`);
+  } else {
+    fs.create(name);
+  }
+}
+```
+
+```js 4:5 title="Bad"
+function createFile(name, dir) {
+  if (dir === 'temp') {
+    fs.create(`./temp/name`);
+  } else if (dir === 'draft') {
+    fs.create(`./draft/name`);
+  } else {
+    fs.create(name);
+  }
+}
+```
+
+```js 1:15 title="Bad"
+function createFile(name, dir) {
+  if (dir === 'temp') {
+    fs.create(`./temp/name`);
+  } else if (dir === 'draft') {
+    fs.create(`./draft/name`);
+  } else if (dir === 'more') {
+    fs.create(`./more/name`);
+  } else if (dir === 'moreandmore') {
+    fs.create(`./more-and-more/name`);
+  } else if (dir === 'anotherpath') {
+    fs.create(`./another-path/name`);
+    // more 100++ lines
+  } else {
+    fs.create(name);
+  }
+}
+```
+
+```js 3:3,5:5,7:7,9:9,11:11,12:12,14:14 title="Bad"
+function createFile(name, dir) {
+  if (dir === 'temp') {
+    fs.createFile(`./temp/name`);
+  } else if (dir === 'draft') {
+    fs.createFile(`./draft/name`);
+  } else if (dir === 'more') {
+    fs.createFile(`./more/name`);
+  } else if (dir === 'moreandmore') {
+    fs.createFile(`./more-and-more/name`);
+  } else if (dir === 'anotherpath') {
+    fs.createFile(`./another-path/name`);
+    // more 100++ lines
+  } else {
+    fs.createFile(name);
+  }
+}
+```
+
+```js 1:7 title="Good"
+function createFile(dir) {
+  fs.create(dir);
+}
+
+function createTempFile(name) {
+  createFile(`./temp/name`);
+}
+```
+
+```js 1:3 title="Good"
+function createFile(dir) {
+  fs.create(dir);
+}
+
+function createTempFile(name) {
+  createFile(`./temp/name`);
+}
+```
+
+```js 5:7 title="Good"
+function createFile(dir) {
+  fs.create(dir);
+}
+
+function createTempFile(name) {
+  createFile(`./temp/name`);
+}
+```
+
+```js 9:11 title="Good"
+function createFile(dir) {
+  fs.create(dir);
+}
+
+function createTempFile(name) {
+  createFile(`./temp/name`);
+}
+
+function createDraftFile(name) {
+  createFile(`./draft/name`);
+}
+```
+
+```js 13:19 title="Good"
+function createFile(dir) {
+  fs.create(dir);
+}
+
+function createTempFile(name) {
+  createFile(`./temp/name`);
+}
+
+function createDraftFile(name) {
+  createFile(`./draft/name`);
+}
+
+function createMoreFile(name) {
+  createFile(`./more/name`);
+}
+
+function createMoreAndMoreFile(name) {
+  createFile(`./more-and-more/name`);
+}
+```
+
+```js 1:3 title="Good"
+function createFile(dir) {
+  fs.create(dir);
+}
+
+function createTempFile(name) {
+  createFile(`./temp/name`);
+}
+
+function createDraftFile(name) {
+  createFile(`./draft/name`);
+}
+
+function createMoreFile(name) {
+  createFile(`./more/name`);
+}
+
+function createMoreAndMoreFile(name) {
+  createFile(`./more-and-more/name`);
+}
+```
+
+```js 2:2 title="Good"
+function createFile(dir) {
+  fs.createFile(dir);
+}
+
+function createTempFile(name) {
+  createFile(`./temp/name`);
+}
+
+function createDraftFile(name) {
+  createFile(`./draft/name`);
+}
+
+function createMoreFile(name) {
+  createFile(`./more/name`);
+}
+
+function createMoreAndMoreFile(name) {
+  createFile(`./more-and-more/name`);
+}
+```
+
+```js 1:19 title="Good"
+function createFile(dir) {
+  fs.createFile(dir);
+}
+
+function createTempFile(name) {
+  createFile(`./temp/name`);
+}
+
+function createDraftFile(name) {
+  createFile(`./draft/name`);
+}
+
+function createMoreFile(name) {
+  createFile(`./more/name`);
+}
+
+function createMoreAndMoreFile(name) {
+  createFile(`./more-and-more/name`);
+}
+```
+
+</CodeSurferLayout>
