@@ -13,6 +13,6 @@
   "devDependencies": {
     "code-surfer": "2.0.0-alpha.5",
     "file-loader": "^4.0.0",
-    "mdx-deck": "^2.5.0"
+    "mdx-deck": "^4.1.1"
   }
 }
